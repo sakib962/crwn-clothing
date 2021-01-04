@@ -1,6 +1,9 @@
 import './App.css';
 import { Component } from 'react';
-import HomePage from './HomePage.component'
+import HomePage from './pages/homepage/HomePage.component';
+import {BrowserRouter, Switch, Route} from 'react-router-dom';
+import ShopPage from './pages/shop/shop.component'
+
 
 class App extends Component {
   state = {
@@ -17,7 +20,12 @@ class App extends Component {
   render() {
     return (
       <div >
-        <HomePage/>
+        <BrowserRouter>
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+            <Route path="/shop" component={ShopPage} />
+          </Switch>
+        </BrowserRouter>
       </div>
     );
   }
