@@ -1,0 +1,9 @@
+.signin-signup {
+  display: flex;
+  justify-content: center;
+  margin: 30px;
+  
+  & > div {
+    margin: 30px;
+  }
+}

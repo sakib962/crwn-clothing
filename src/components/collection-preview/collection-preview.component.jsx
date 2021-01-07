@@ -3,7 +3,6 @@ import './collection-preview.style.scss';
 
 
 const CollectionPreview = (props) => {
-  console.log(props)
   const {title, items} = props
 
   return (
