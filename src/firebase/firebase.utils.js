@@ -15,19 +15,19 @@ const config = {
 firebase.initializeApp(config);
 
 export const createUserProfileDocument = async (userAuth, additionalData) => {
-  console.log(additionalData)
+  console.log(userAuth)
   if(!userAuth) return;
   const userRef = firestore.doc(`user/${userAuth.uid}`);
   const snapShot = await userRef.get()
   console.log(snapShot)
 
   if(!snapShot.exists) {
-    const {email, photoURL} = userAuth;
+    const {displayName, email, photoURL} = userAuth;
     const joined = new Date();
 
     try {
       userRef.set({
-        displayName: additionalData.displayName,
+        displayName: displayName || additionalData.displayName,
         email,
         photoURL,
         joined
