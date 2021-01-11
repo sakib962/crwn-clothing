@@ -1,6 +1,7 @@
 const cartActions = {
   CART_DROPDOWN_TOGGLE: 'CART_DROPDOWN_TOGGLE',
-  ADD_ITEM: 'ADD_ITEM'
+  ADD_ITEM: 'ADD_ITEM',
+  REMOVER_ITEM_FROM_CART: 'REMOVER_ITEM_FROM_CART'
 }
 
 export default cartActions;
