@@ -20,7 +20,19 @@
       }
     }
   }
-  
+
+  .test-warning {
+    color: red;
+    margin: 20px auto;
+    font-size: 20px;
+
+    .number {
+      color: green;
+    }
+  }
+  button {
+    margin-left: auto;
+  }
   .total {
     margin-top: 30px;
     margin-left: auto;
