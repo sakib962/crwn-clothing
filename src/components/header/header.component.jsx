@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom';
-import './header.styles.scss';
 import { ReactComponent as Logo} from '../../assets/crown.svg';
 import {auth} from '../../firebase/firebase.utils';
+
+import { HeaderContainer, LogoContainer, OptionsContainer, OptionLink, ProfilePic } from './header.styles'
 
 import { connect } from 'react-redux'
 import CartIcon from '../cart-icon/cart-icon.component';
@@ -14,35 +14,33 @@ import { selectCartHidden } from "../../redux/cart/cart.selector";
 
 const Header = ({currentUser, cartHidden}) => {
   return (
-    <div className="header">
-        <Link to='/' className='logo-container'>
+    <HeaderContainer className="header">
+        <LogoContainer to='/'>
           <Logo className='logo'/>
-        </Link>
-        <div className='options'>
-          <Link to='/shop' className='option'>SHOP</Link>
-          <Link to='/contact' className='option'>CONTACT</Link>
+        </LogoContainer>
+        <OptionsContainer>
+          <OptionLink to='/shop'>SHOP</OptionLink>
+          <OptionLink to='/contact'>CONTACT</OptionLink>
           {
             currentUser ?
-            <div className="options">
-              <div className='option' onClick={() => auth.signOut()}>SIGN OUT</div>
+            <OptionsContainer>
+              <OptionLink as='div' onClick={() => auth.signOut()}>SIGN OUT</OptionLink>
               {
                 currentUser.photoURL?
-                <img src={currentUser.photoURL} alt={currentUser.displayName} />
+                <ProfilePic src={currentUser.photoURL} alt={currentUser.displayName} />
                 :
                 null
               }
-              
-            </div>
-            
+            </OptionsContainer>   
             : 
-            <Link to='/signin' className='option'>SIGN IN</Link>
+            <OptionLink to='/signin'>SIGN IN</OptionLink>
           }
-          <CartIcon className='option'/>
-        </div>
+          <CartIcon/>
+        </OptionsContainer>
         {
           cartHidden ? null : <CartDropdown />
         }
-    </div>
+    </HeaderContainer>
   )
 }
 

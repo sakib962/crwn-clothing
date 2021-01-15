@@ -34,7 +34,7 @@ const Checkout = ({ cartItems, total }) => {
         <span>TOTAL: ${total}</span>
       </div>
       <div className='test-warning'>
-        * Please use the following test credit cart for payments *
+        Please use the following test credit cart for payments
         <br/>
         <span className='number'>4242 4242 4242 4242</span> - Exp: <span className='number'>01/20</span> - CVV: <span className='number'>123</span>
       </div>
