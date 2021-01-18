@@ -8,6 +8,9 @@ import { createStructuredSelector } from 'reselect';
 import { selectCurrentUser } from './redux/user/user.selector';
 import { setCurrentUser } from './redux/user/user.action';
 
+// import { selectCollectionForOverview } from './redux/shop/shop.select';
+// import { addCollectionsAndDocuments } from './firebase/firebase.utils';
+
 import HomePage from './pages/homepage/HomePage.component';
 import ShopPage from './pages/shop/shop.component';
 import Checkout from './pages/checkout/checkout.component';
@@ -26,7 +29,7 @@ class App extends Component {
     this.setState((prevState, prevProps) => {
       return {number: prevState.number + prevProps.increment}
     }, () => {
-      console.log(this.state.number)
+      // console.log(this.state.number)
     });
     
   }
@@ -34,13 +37,14 @@ class App extends Component {
   unSubscribeFromAuth = null;
 
   componentDidMount() {
-    const { setCurrentUser } = this.props;
+    const { setCurrentUser, collectionArray } = this.props;
+    console.log(collectionArray)
     this.unSubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if(userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
         userRef.onSnapshot(snapShot => {
-          console.log(snapShot)
-          console.log(snapShot.data())
+          // console.log(snapShot)
+          // console.log(snapShot.data())
           setCurrentUser({
               id : snapShot.id,
               ...snapShot.data()
@@ -49,8 +53,10 @@ class App extends Component {
       } else {
         setCurrentUser(userAuth);
       }
-            
-      console.log(userAuth)
+      // console.log(userAuth);
+
+      // addCollectionsAndDocuments('collections', collectionArray.map(({title, items}) => ({title, items})))
+      // .catch(console.log)
     });
   }
 
@@ -85,6 +91,7 @@ class App extends Component {
 
 const mapStateToProps = createStructuredSelector({
   currentUser: selectCurrentUser,
+  // collectionArray: selectCollectionForOverview
 })
 
 const mapDispatchToProps = (dispatch) => ({
