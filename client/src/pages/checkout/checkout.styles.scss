@@ -1,0 +1,50 @@
+.checkout-page {
+  width: 700px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (max-width: 800px) {
+    margin: unset;
+    width: unset;
+  }
+
+  .checkout-header {
+    width: 100%;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid darkgray;
+
+    @media screen and (max-width: 800px) {
+      display: none;
+    }
+
+    .header-block {
+      width: 23%;
+      text-transform: uppercase;
+
+      &:last-child {
+        width: 8%;
+      }
+    }
+  }
+
+  .test-warning {
+    color: red;
+    margin: 20px auto;
+    font-size: 20px;
+
+    .number {
+      color: green;
+    }
+  }
+  button {
+    margin-left: auto;
+  }
+  .total {
+    margin-top: 30px;
+    margin-left: auto;
+    font-size: 36px;
+  }
+}

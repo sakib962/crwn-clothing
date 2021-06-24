@@ -2,6 +2,16 @@
 
 # dependencies
 /node_modules
+/client/node_modules
+/client/.pnp
+/client/.pnp.js
+
+# testing
+/client/coverage
+
+# production
+/client/build
+
 /.pnp
 .pnp.js
 
@@ -10,6 +20,9 @@
 
 # production
 /build
+/client/build
+
+.env
 
 # misc
 .DS_Store
@@ -17,6 +30,12 @@
 .env.development.local
 .env.test.local
 .env.production.local
+
+/client/.DS_Store
+/client/.env.local
+/client/.env.development.local
+/client/.env.test.local
+/client/.env.production.local
 
 npm-debug.log*
 yarn-debug.log*
